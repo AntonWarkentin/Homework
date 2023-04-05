@@ -17,8 +17,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
             var rand = new Random();
             double operand1 = rand.Next();
             double operand2 = rand.Next();
+
             Console.WriteLine("Please enter operator sign");
             var sign = Console.ReadLine();
+
             switch (sign)
             {
                 case "+": 
@@ -39,20 +41,24 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     break;
             }
         }
+
         static void Task2()
         {
             Console.WriteLine("Please enter number from 0 to 100");
             double usersNumber = Double.Parse(Console.ReadLine());
+
             if (usersNumber >= 0 && usersNumber <= 14) Console.WriteLine("Number is in range [0 - 14]");
             else if (usersNumber >= 15 && usersNumber <= 35) Console.WriteLine("Number is in range [15 - 35]");
             else if (usersNumber >= 36 && usersNumber <= 50) Console.WriteLine("Number is in range [36 - 50]");
             else if (usersNumber >= 51 && usersNumber <= 100) Console.WriteLine("Number is in range [51 - 100]");
             else Console.WriteLine("Incorrect number");
         }
+
         static void Task3()
         {
             Console.WriteLine("Please enter word about weather in Russian");
             string russianWord = Console.ReadLine().ToLower();
+
             switch (russianWord)
             {
                 case "ветренно":
@@ -90,12 +96,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     break;
             }
         }
+
         static void Task4()
         {
             Console.WriteLine("Please enter any integer number");
             int number = Int32.Parse(Console.ReadLine());
+
             if (number % 2 == 0) Console.WriteLine("This number is even");
             else Console.WriteLine("This number isn't even");
         }
+
     }
 }

@@ -228,7 +228,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 }
                 Console.Write("\n");
             }
-
             return randomArray;
         }
 

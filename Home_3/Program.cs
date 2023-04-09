@@ -20,27 +20,33 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Task9();
         }
 
+        /// <summary>
+        /// 0.    Создайте массив целых чисел. Напишете программу, которая выводит сообщение о том, входит ли заданное число в массив или нет.  Пусть число для поиска задается с консоли.
+        /// </summary>
+
         static void Task0()
         {
+            int[] intArray = CreateArrayWithRandomValues(10, 20);
+
             Console.WriteLine("Enter any int number from 1 to 20");
             var numberToSearch = int.Parse(Console.ReadLine());
-
-            int[] intArray = CreateArrayWithRandomValues(10, 20);
 
             for (int i = 0; i < intArray.Length; i++)
             {
                 if (intArray[i] == numberToSearch)
                 {
-                    Console.Write($"The number {numberToSearch} is in the array ");
-                    break;
-                }
-                else if (i == intArray.Length - 1)
-                {
-                    Console.Write($"The number {numberToSearch} is NOT in the array ");
+                    Console.WriteLine($"The number {numberToSearch} is in the array ");
+                    return;
                 }
             }
-            Console.Write(string.Join(" ", intArray));
+            Console.WriteLine($"The number {numberToSearch} is NOT in the array ");
         }
+
+        /// <summary>
+        /// 1. Создайте массив целых чисел. Удалите все вхождения заданного числа из массива.  
+        /// Пусть число задается с консоли.Если такого числа нет - выведите сообщения об этом.
+        /// В результате должен быть новый массив без указанного числа.  
+        /// </summary>
 
         static void Task1()
         {
@@ -62,6 +68,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine($"Final array:");
             Console.Write(string.Join(" ", finalArray));
         }
+
+        /// <summary>
+        /// 2. Создайте и заполните массив случайным числами и выведете максимальное, минимальное и среднее значение.  
+        /// Для генерации случайного числа используйте метод Random() .  Пусть будет возможность создавать массив произвольного размера.Пусть размер массива вводится с консоли.
+        /// </summary>
 
         static void Task2()
         {
@@ -86,6 +97,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.Write($"\nAverage is {sum / array.Length}");
         }
 
+        /// <summary>
+        /// 3. Создайте 2 массива из 5 чисел.  
+        /// Выведите массивы на консоль в двух отдельных строках.
+        /// Посчитайте среднее арифметическое элементов каждого массива и сообщите, для какого из массивов это значение оказалось больше (либо сообщите, что их средние арифметические равны).  
+        /// </summary>
+
         static void Task3()
         {
             int[] array1 = CreateArrayWithRandomValues(5, 50);
@@ -102,6 +119,13 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine($"Averages of the arrays are equal ({averageOfArray1} = {averageOfArray2})!");
         }
 
+        /// <summary>
+        /// 4. Создайте массив и заполните массив.  
+        /// Выведите массив на экран в строку.
+        /// Замените каждый элемент с нечётным индексом на ноль.
+        /// Снова выведете массив на экран на отдельной строке. 
+        /// </summary>
+
         static void Task4()
         {
             int[] randomArray = CreateArrayWithRandomValues(10, 50);
@@ -113,6 +137,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             Console.WriteLine($"Final array:\n{string.Join(" ", randomArray)}");
         }
+
+        /// <summary>
+        /// 5. Создайте массив строк. Заполните его произвольными именами людей.  
+        /// Отсортируйте массив.
+        /// Результат выведите на консоль.
+        /// </summary>
 
         static void Task5()
         {
@@ -128,6 +158,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Array.Sort(arrayOfNames);
             Console.WriteLine($"Sorted array:\n{string.Join(" ", arrayOfNames)}");
         }
+
+        /// <summary>
+        /// 6.Реализуйте алгоритм сортировки массива пузырьком.
+        /// </summary>
 
         static void Task6()
         {
@@ -146,6 +180,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
         }
 
+        /// <summary>
+        /// 7. Создайте двумерный массив целых чисел. Выведите на консоль сумму всех
+        /// элементов массива.
+        /// </summary>
+
         static void Task7()
         {
             int[,] twoDimensionalArray = CreateArrayWithRandomValues(3, 4, 50);
@@ -158,13 +197,17 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine($"\nSum is {sumOfAllElements}");
         }
 
+        /// <summary>
+        /// 8 Создайте двумерный массив. Выведите на консоль диагонали массива.
+        /// </summary>
+
         static void Task8()
         {
             int[,] twoDimensionalArray = CreateArrayWithRandomValues(3, 4, 50);
 
             var diagonalOfArray = new List<int>();
             var reverseDiagonalOfArray = new List<int>();
-            var reverseIterator = twoDimensionalArray.GetLength(1);
+            var reverseIterator = twoDimensionalArray.GetLength(0);
 
             for (int i = 0; i < twoDimensionalArray.GetLength(0); i++)
             {
@@ -186,6 +229,13 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine($"Diagonal: {string.Join(" ", diagonalOfArray)}\nReverse diagonal: {string.Join(" ", reverseDiagonalOfArray)}");
         }
 
+        /// <summary>
+        /// 9. Создайте массив из n случайных целых чисел и выведите его на экран.  
+        /// Размер массива пусть задается с консоли и размер массива может быть больше 5 и меньше или равно 10.  
+        /// Если n не удовлетворяет условию - выведите сообщение об этом.Если пользователь ввёл не подходящее число, то программа должна просить пользователя повторить ввод.
+        /// Создайте второй массив только из чётных элементов первого массива, если они там есть, и вывести его на экран.
+        /// </summary>
+
         static void Task9()
         {
             Console.WriteLine("Enter length of array");
@@ -203,6 +253,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine($"Only even values of the array:\n{string.Join(" ", evenValuesOfArray)}");
         }
 
+        /// <summary>
+        /// Generates an array with random values
+        /// </summary>
+        /// <param name="arrayLength">Length of array with random values</param>
+        /// <param name="maxRandomValue">Maximum random value</param>
+        /// <returns></returns>
 
         static int[] CreateArrayWithRandomValues(int arrayLength, int maxRandomValue)
         {
@@ -211,6 +267,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine($"Generated array:\n{string.Join(" ", randomArray)}");
             return randomArray;
         }
+
+        /// <summary>
+        /// Generates two-dimensional array with random values
+        /// </summary>
+        /// <param name="arrayLengthFirstDimension">Length of array with random values (line)</param>
+        /// <param name="arrayLengthSecondDimension">Length of array with random values (column)</param>
+        /// <param name="maxRandomValue">Maximum random value</param>
+        /// <returns></returns>
 
         static int[,] CreateArrayWithRandomValues(int arrayLengthFirstDimension, int arrayLengthSecondDimension, int maxRandomValue)
         {
@@ -223,13 +287,19 @@ namespace MyApp // Note: actual namespace depends on the project name.
             {
                 for (int j = 0; j < randomArray.GetLength(1); j++)
                 {
-                    randomArray[i, j] = random.Next(1, 50);
+                    randomArray[i, j] = random.Next(1, maxRandomValue);
                     Console.Write($"{randomArray[i, j]}\t");
                 }
                 Console.Write("\n");
             }
             return randomArray;
         }
+
+        /// <summary>
+        /// Generating a random name
+        /// </summary>
+        /// <param name="len">Length of resulting name</param>
+        /// <returns></returns>
 
         public static string GenerateName(int len)
         {

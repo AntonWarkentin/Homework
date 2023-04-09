@@ -1,4 +1,8 @@
-﻿using System.Data.SqlTypes;
+﻿using System;
+using System.Data.SqlTypes;
+using System.Linq.Expressions;
+using System.Text;
+using System.Xml.Linq;
 
 namespace Home_4
 {
@@ -7,7 +11,11 @@ namespace Home_4
         static void Main(string[] args)
         {
             Task1();
-
+            Task2();
+            Task3();
+            Task4();
+            Task5();
+            Task6();
         }
 
         /// <summary>
@@ -16,7 +24,10 @@ namespace Home_4
 
         static void Task1()
         {
-
+            string initialString = "12test7594test89595test7373267";
+            Console.WriteLine(initialString);
+            string editedString = initialString.Replace("test", "testing");
+            Console.WriteLine(editedString);
         }
 
         /// <summary>
@@ -26,9 +37,20 @@ namespace Home_4
 
         static void Task2()
         {
+            string stringWelcome = "Welcome";
+            string stringTo = "to";
+            string stringThe = "the";
+            string stringTMS = "TMS";
+            string sytringLessons = "lessons";
 
+            string[] stringsAllTogether = { stringWelcome, stringTo, stringThe, stringTMS, sytringLessons };
 
+            for (int i = 0; i < stringsAllTogether.Length; i++)
+            {
+                stringsAllTogether[i] = string.Format("\"{0}\"", stringsAllTogether[i]);
+            }
 
+            Console.WriteLine(string.Join(" ", stringsAllTogether));
         }
 
         /// <summary>
@@ -39,7 +61,14 @@ namespace Home_4
 
         static void Task3()
         {
+            string insertedString = "teamwithsomeofexcersicesabcwanttomakeitbetter";
+            string splitter = "abc";
 
+            int indexOfabc = insertedString.IndexOf(splitter);
+            string firstPart = insertedString.Substring(0, indexOfabc);
+            string secondPart = insertedString.Substring(indexOfabc + splitter.Length);
+
+            Console.WriteLine($"First part: {firstPart}\nSecond part: {secondPart}");
         }
 
         /// <summary>
@@ -50,7 +79,17 @@ namespace Home_4
 
         static void Task4()
         {
+            string insertedString = "Good day";
+            string insertIntoString = "The best!!!!!!!!!";
+            string goodString = "Good";
 
+            int indexOfSubstring = insertedString.IndexOf(goodString) + goodString.Length;
+            int indexOfExclamationMark = insertIntoString.IndexOf("!");
+
+            string stringWithoutQuestionmark = insertIntoString.Insert(indexOfExclamationMark, insertedString.Substring(indexOfSubstring));
+
+            string resultString = stringWithoutQuestionmark.Substring(0, stringWithoutQuestionmark.LastIndexOf("!")) + "?";
+            Console.WriteLine(resultString);
         }
 
         /// <summary>
@@ -60,7 +99,19 @@ namespace Home_4
 
         static void Task5()
         {
+            Console.WriteLine("Enter a line containing both letters and digits");
+            string insertedString = Console.ReadLine();
+            StringBuilder stringBuilder = new StringBuilder();
 
+            foreach (char element in insertedString.ToCharArray())
+            {
+                if ( ! char.IsDigit(element) )
+                {
+                    stringBuilder.Append(element);
+                }
+            }
+
+            Console.WriteLine(stringBuilder.ToString());
         }
 
         /// <summary>
@@ -69,7 +120,26 @@ namespace Home_4
 
         static void Task6()
         {
+            Console.WriteLine("Enter the first sentence");
+            string? firstSentence = Console.ReadLine();
 
+            Console.WriteLine("Enter the second sentence");
+            string? secondSentence = Console.ReadLine();
+
+            foreach (string word in firstSentence.Split(" "))
+            {
+                int numberOfOccurances = 0;
+                int index = secondSentence.IndexOf(word);
+
+                while (index >= 0)
+                {
+                    numberOfOccurances++;
+                    index = secondSentence.IndexOf(word, index + word.Length);
+                }
+
+                Console.WriteLine($"Word {word} have been in the second sentence for {numberOfOccurances} times");
+            }
+            Console.WriteLine();
         }
     }
 }

@@ -1,12 +1,14 @@
-﻿using System.Text.RegularExpressions;
-using System;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Home_5
 {
-    internal class Program
+    internal class Student
     {
-        
+
         /// <summary>
         /// 1. Coздайте класс Student, в классе используйте поля Id, Name, Age, Group, MathMark (Оценка по математике от 1 до 10 включительно), PhysicalEducationMark (Оценка по физкультуре от 1 до 10), 
         /// BiologyMark (Оценка по биологии от 1 до 10), Reward (денежное вознаграждение за хорошую учебу)
@@ -22,36 +24,53 @@ namespace Home_5
         /// Добавьте каждому студенту из группы с наибольшим средним баллом по всем дисциплинам произвольный reward.
         /// Выведите на экран студента с наибольшим reward. Если таких студентов несколько - выведите их всех.
         /// </summary>
+
+        static private int defaultMarkValue = 1;
+        static private int idCounter = 0;
+        private int reward;
+
+        public int Id { get; set; }
+
+        public string? Name { get; set; }
+
+        public int Age { get; set; }
+
+        public int Group { get; set;}
+
+        public int MathMark { get; set; }     
         
-        static void Main(string[] args)
+        public int PhysicalEducationMark { get; set; }
+        
+        public int BiologyMark { get; set; }
+
+        public int Reward 
         {
-            School school = new School();
-            
-            school.bestMarksInEachGroup();
-            school.averageMarksInEachGroup();
-            school.RewardToGroupWithBiggestAverageMark();
-            school.StudentsWithBiggestReward();
-
-
-
-            //for (int i = 0; i < school.SchoolGroups[2].Students.Length; i++)
-            //{
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].MathMark);
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].PhysicalEducationMark);
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].BiologyMark);
-            //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
-
-            //for (int i = 0; i < school.SchoolGroups[2].Students.Length; i++)
-            //{
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].Reward);
-            //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
-
+            get { return reward; }
+            set
+            {
+                reward += Math.Abs(value);
+            }
         }
 
 
+        public Student(string name, int age, int group, int mathMark, int physicalEducationMark, int biologyMark)
+        {
+            Id = ++idCounter;
+            Name = name;
+            Age = age;
+            Group = group;
+            MathMark = AssignMarkValue(mathMark);
+            PhysicalEducationMark = AssignMarkValue(physicalEducationMark);
+            BiologyMark = AssignMarkValue(biologyMark);
+        }
+
+        private static int AssignMarkValue(int markValue)
+        {
+            if (Enumerable.Range(1, 10).Contains(markValue))
+            {
+                return markValue;
+            }
+            else return defaultMarkValue;
+        }
     }
 }

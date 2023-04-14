@@ -1,12 +1,14 @@
-﻿using System.Text.RegularExpressions;
-using System;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Home_5
 {
-    internal class Program
+    internal class StudentsGroup
     {
-        
+
         /// <summary>
         /// 1. Coздайте класс Student, в классе используйте поля Id, Name, Age, Group, MathMark (Оценка по математике от 1 до 10 включительно), PhysicalEducationMark (Оценка по физкультуре от 1 до 10), 
         /// BiologyMark (Оценка по биологии от 1 до 10), Reward (денежное вознаграждение за хорошую учебу)
@@ -22,36 +24,119 @@ namespace Home_5
         /// Добавьте каждому студенту из группы с наибольшим средним баллом по всем дисциплинам произвольный reward.
         /// Выведите на экран студента с наибольшим reward. Если таких студентов несколько - выведите их всех.
         /// </summary>
+
+        static private int groupSize = 5;
+        static private int amountOfDisciplines = 3;
+        static private int groupNumberCounter = 0;
+
+        public int GroupNumber { get; set; }
         
-        static void Main(string[] args)
+        public Student[] Students { get; set; }
+
+        public StudentsGroup()
         {
-            School school = new School();
-            
-            school.bestMarksInEachGroup();
-            school.averageMarksInEachGroup();
-            school.RewardToGroupWithBiggestAverageMark();
-            school.StudentsWithBiggestReward();
+            Student[] students = new Student[groupSize];
+            Random random = new Random();
+            GroupNumber = ++groupNumberCounter;
 
+            for (int i = 0; i < students.Length; i++)
+            {
+                students[i] = new(Home_3.Program.GenerateName(6), random.Next(16, 100), GroupNumber, random.Next(1, 10), random.Next(1, 10), random.Next(1, 10));
+            }
 
-
-            //for (int i = 0; i < school.SchoolGroups[2].Students.Length; i++)
-            //{
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].MathMark);
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].PhysicalEducationMark);
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].BiologyMark);
-            //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
-
-            //for (int i = 0; i < school.SchoolGroups[2].Students.Length; i++)
-            //{
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].Reward);
-            //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
-
+            Students = students;
         }
 
+        public Student BestMathMarkInGroup()
+        {
+            Student bestMathStudent = this.Students[0];
 
+            foreach (Student student in this.Students)
+            {
+                if (student.MathMark > bestMathStudent.MathMark)
+                {
+                    bestMathStudent = student;
+                }
+            }
+
+            return bestMathStudent;
+        }
+        
+        public Student BestPhysicalEducationMarkInGroup()
+        {
+            Student bestPhysicalEducationStudent = this.Students[0];
+
+            foreach (Student student in this.Students)
+            {
+                if (student.PhysicalEducationMark > bestPhysicalEducationStudent.PhysicalEducationMark)
+                {
+                    bestPhysicalEducationStudent = student;
+                }
+            }
+
+            return bestPhysicalEducationStudent;
+        }
+        
+        public Student BestBiologyMarkInGroup()
+        {
+            Student bestBiologyStudent = this.Students[0];
+
+            foreach (Student student in this.Students)
+            {
+                if (student.BiologyMark > bestBiologyStudent.BiologyMark)
+                {
+                    bestBiologyStudent = student;
+                }
+            }
+
+            return bestBiologyStudent;
+        }
+        
+        public double AverageMathMark()
+        {
+            double sum = 0;
+
+            foreach (Student student in this.Students)
+            {
+                sum += student.MathMark;
+            }    
+
+            return sum / this.Students.Length;
+        }
+        
+        public double AveragePhysicalEducationMark()
+        {
+            double sum = 0;
+
+            foreach (Student student in this.Students)
+            {
+                sum += student.PhysicalEducationMark;
+            }    
+
+            return sum / this.Students.Length;
+        }
+        
+        public double AverageBiologyMark()
+        {
+            double sum = 0;
+
+            foreach (Student student in this.Students)
+            {
+                sum += student.BiologyMark;
+            }    
+
+            return sum / this.Students.Length;
+        }
+
+        public double averageAllDisciplinesMark()
+        {
+            double sum = 0;
+
+            sum += this.AverageMathMark();
+            sum += this.AveragePhysicalEducationMark();
+            sum += this.AverageBiologyMark();
+
+            return sum / amountOfDisciplines;
+        }
     }
 }

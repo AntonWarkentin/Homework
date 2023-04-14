@@ -31,25 +31,6 @@ namespace Home_5
             school.averageMarksInEachGroup();
             school.RewardToGroupWithBiggestAverageMark();
             school.StudentsWithBiggestReward();
-
-
-
-            //for (int i = 0; i < school.SchoolGroups[2].Students.Length; i++)
-            //{
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].MathMark);
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].PhysicalEducationMark);
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].BiologyMark);
-            //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
-
-            //for (int i = 0; i < school.SchoolGroups[2].Students.Length; i++)
-            //{
-            //    Console.WriteLine(school.SchoolGroups[2].Students[i].Reward);
-            //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
-
         }
 
 

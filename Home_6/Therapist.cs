@@ -1,8 +1,13 @@
-﻿using static System.Net.Mime.MediaTypeNames;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Home_6
 {
-    internal class Program
+    internal class Therapist : Physician
     {
 
         /// <summary>
@@ -16,16 +21,18 @@ namespace Home_6
         /// Если план лечения == Other – назначить терапевта и выполнить метод лечить.
         /// </summary>
 
-        static void Main(string[] args)
+        public Therapist(string name) : base(name)
         {
-            Clinic clinic1 = new Clinic();
-            clinic1.TreatmentOfAllPatients();
+            Name = name;
+            doctorsSpecialisation = IllnessType.Other;
+        }
 
-            Patient alex = new Patient("Alex", new Dictionary<IllnessType, bool>() { { IllnessType.Other, false } });
-            Patient andrei = new Patient("Andrei", new Dictionary<IllnessType, bool>() { { IllnessType.Eyes, false }, { IllnessType.Other, false }, { IllnessType.Teeth, false } });
-            Patient[] patientsOfClinic2 = new Patient[2] { alex, andrei };
-            Clinic clinic2 = new Clinic(patientsOfClinic2);
-            clinic2.TreatmentOfAllPatients();
+        public override void Treat(Patient patient)
+        {
+            Console.WriteLine($"Treating patient {patient.Name} by Therapist {this.Name} starts:");
+            base.Treat(patient);
+            Console.WriteLine($"Therapist {this.Name} has finished treating patient {patient.Name}.");
+            Console.WriteLine();
         }
     }
 }

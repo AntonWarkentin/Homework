@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyApp // Note: actual namespace depends on the project name.
+namespace Home_2 // Note: actual namespace depends on the project name.
 {
     internal class Program
     {
@@ -23,8 +23,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             switch (sign)
             {
-                case "+": 
-                    Console.WriteLine($"{operand1} + {operand2} = {operand1 + operand2}"); 
+                case "+":
+                    Console.WriteLine($"{operand1} + {operand2} = {operand1 + operand2}");
                     break;
                 case "-":
                     Console.WriteLine($"{operand1} - {operand2} = {operand1 - operand2}");
@@ -45,7 +45,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void Task2()
         {
             Console.WriteLine("Please enter number from 0 to 100");
-            double usersNumber = Double.Parse(Console.ReadLine());
+            double usersNumber = double.Parse(Console.ReadLine());
 
             if (usersNumber >= 0 && usersNumber <= 14) Console.WriteLine("Number is in range [0 - 14]");
             else if (usersNumber >= 15 && usersNumber <= 35) Console.WriteLine("Number is in range [15 - 35]");
@@ -91,7 +91,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 case "туманно":
                     Console.WriteLine("Foggy weather");
                     break;
-                default: 
+                default:
                     Console.WriteLine("I don't know such word, sorry!");
                     break;
             }
@@ -100,7 +100,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void Task4()
         {
             Console.WriteLine("Please enter any integer number");
-            int number = Int32.Parse(Console.ReadLine());
+            int number = int.Parse(Console.ReadLine());
 
             if (number % 2 == 0) Console.WriteLine("This number is even");
             else Console.WriteLine("This number isn't even");

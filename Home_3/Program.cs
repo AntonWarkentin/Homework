@@ -113,7 +113,7 @@ namespace Home_3 // Note: actual namespace depends on the project name.
 
             if (averageOfArray1 > averageOfArray2)
                 Console.WriteLine($"Average of the First array ({averageOfArray1}) is bigger than average of the Second array ({averageOfArray2})!");
-            else if (averageOfArray1 < averageOfArray2) 
+            else if (averageOfArray1 < averageOfArray2)
                 Console.WriteLine($"Average of the Second array ({averageOfArray2}) is bigger than average of the First array ({averageOfArray1})!");
             else
                 Console.WriteLine($"Averages of the arrays are equal ({averageOfArray1} = {averageOfArray2})!");
@@ -129,10 +129,10 @@ namespace Home_3 // Note: actual namespace depends on the project name.
         static void Task4()
         {
             int[] randomArray = CreateArrayWithRandomValues(10, 50);
-            
-            for  (int i = 0; i < randomArray.Length; i++)
+
+            for (int i = 0; i < randomArray.Length; i++)
             {
-                randomArray[i] = (i % 2 != 0) ? 0 : randomArray[i];
+                randomArray[i] = i % 2 != 0 ? 0 : randomArray[i];
             }
 
             Console.WriteLine($"Final array:\n{string.Join(" ", randomArray)}");
@@ -146,7 +146,7 @@ namespace Home_3 // Note: actual namespace depends on the project name.
 
         static void Task5()
         {
-            string[] arrayOfNames = new string [10];
+            string[] arrayOfNames = new string[10];
 
             for (int i = 0; i < arrayOfNames.Length; i++)
             {
@@ -225,7 +225,7 @@ namespace Home_3 // Note: actual namespace depends on the project name.
                     reverseDiagonalOfArray.Add(twoDimensionalArray[i, reverseIterator]);
                 }
             }
-            
+
             Console.WriteLine($"Diagonal: {string.Join(" ", diagonalOfArray)}\nReverse diagonal: {string.Join(" ", reverseDiagonalOfArray)}");
         }
 
@@ -241,7 +241,7 @@ namespace Home_3 // Note: actual namespace depends on the project name.
             Console.WriteLine("Enter length of array");
             int lengthOfArray = int.Parse(Console.ReadLine());
 
-            while ( !(lengthOfArray > 5 && lengthOfArray <= 10) )
+            while (!(lengthOfArray > 5 && lengthOfArray <= 10))
             {
                 Console.WriteLine("Array's length should be in the [6 - 10] range. Please re-enter length.");
                 lengthOfArray = int.Parse(Console.ReadLine());
@@ -249,7 +249,7 @@ namespace Home_3 // Note: actual namespace depends on the project name.
 
             int[] arrayWithVariedLength = CreateArrayWithRandomValues(lengthOfArray, 50);
 
-            int[] evenValuesOfArray = arrayWithVariedLength.Where((x,i) => i % 2 == 0).ToArray();
+            int[] evenValuesOfArray = arrayWithVariedLength.Where((x, i) => i % 2 == 0).ToArray();
             Console.WriteLine($"Only even values of the array:\n{string.Join(" ", evenValuesOfArray)}");
         }
 

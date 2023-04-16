@@ -27,12 +27,10 @@ namespace Home_5
         {
             School school = new School();
             
-            school.bestMarksInEachGroup();
-            school.averageMarksInEachGroup();
+            school.BestMarksInEachGroup();
+            school.AverageMarksInEachGroup();
             school.RewardToGroupWithBiggestAverageMark();
             school.StudentsWithBiggestReward();
         }
-
-
     }
 }

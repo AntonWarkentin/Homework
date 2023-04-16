@@ -41,13 +41,13 @@ namespace Home_5
             SchoolGroups = groupsAllTogether;
         }
         
-        public void bestMarksInEachGroup()
+        public void BestMarksInEachGroup()
         {
-            foreach (StudentsGroup studentsGroup in this.SchoolGroups)
+            foreach (StudentsGroup studentsGroup in SchoolGroups)
             {
-                Student bestMathMarkStudent = studentsGroup.BestMathMarkInGroup();
-                Student bestPhysicalEducationMark = studentsGroup.BestPhysicalEducationMarkInGroup();
-                Student bestBiologyMarkStudent = studentsGroup.BestBiologyMarkInGroup();
+                Student bestMathMarkStudent = studentsGroup.BestMarkInGroup(Course.Math);
+                Student bestPhysicalEducationMark = studentsGroup.BestMarkInGroup(Course.PhysicalEducation);
+                Student bestBiologyMarkStudent = studentsGroup.BestMarkInGroup(Course.Biology);
 
                 Console.WriteLine($"Group{studentsGroup.GroupNumber}:");
                 Console.WriteLine($"Best Math mark: {bestMathMarkStudent.Name}, Mark: {bestMathMarkStudent.MathMark}");
@@ -61,26 +61,26 @@ namespace Home_5
             }
         }
 
-        public void averageMarksInEachGroup()
+        public void AverageMarksInEachGroup()
         {
-            foreach (StudentsGroup studentsGroup in this.SchoolGroups)
+            foreach (StudentsGroup studentsGroup in SchoolGroups)
             {
                 Console.WriteLine($"Group{studentsGroup.GroupNumber}:");
-                Console.WriteLine($"Average Math mark: {studentsGroup.AverageMathMark()}");
-                Console.WriteLine($"Average Physical Education mark: {studentsGroup.AveragePhysicalEducationMark()}");
-                Console.WriteLine($"Average Biology mark: {studentsGroup.AverageBiologyMark()}");
-                Console.WriteLine($"Average mark of Group{studentsGroup.GroupNumber} - Math, PhysicalEducation, Biology: {studentsGroup.averageAllDisciplinesMark():N2}\n");
+                Console.WriteLine($"Average Math mark: {studentsGroup.AverageMark(Course.Math)}");
+                Console.WriteLine($"Average Physical Education mark: {studentsGroup.AverageMark(Course.PhysicalEducation)}");
+                Console.WriteLine($"Average Biology mark: {studentsGroup.AverageMark(Course.Biology)}");
+                Console.WriteLine($"Average mark of Group{studentsGroup.GroupNumber} - Math, PhysicalEducation, Biology: {studentsGroup.AverageAllDisciplinesMark():N2}\n");
             }
         }
 
         public StudentsGroup GroupWithBiggestAverageMark()
         {
-            StudentsGroup studentsGroupWithBiggestAverageMark = this.SchoolGroups[0];
+            StudentsGroup studentsGroupWithBiggestAverageMark = SchoolGroups[0];
 
-            foreach (StudentsGroup studentsGroup in this.SchoolGroups)
+            foreach (StudentsGroup studentsGroup in SchoolGroups)
             {
-                double averageMark = studentsGroup.averageAllDisciplinesMark();
-                if (averageMark > studentsGroupWithBiggestAverageMark.averageAllDisciplinesMark())
+                double averageMark = studentsGroup.AverageAllDisciplinesMark();
+                if (averageMark > studentsGroupWithBiggestAverageMark.AverageAllDisciplinesMark())
                 {
                     studentsGroupWithBiggestAverageMark = studentsGroup;
                 }
@@ -91,7 +91,7 @@ namespace Home_5
 
         public void RewardToGroupWithBiggestAverageMark()
         {
-            StudentsGroup groupWithBiggestAverageMark = this.GroupWithBiggestAverageMark();
+            StudentsGroup groupWithBiggestAverageMark = GroupWithBiggestAverageMark();
             Console.WriteLine($"Providing reward to all members of Group{groupWithBiggestAverageMark.GroupNumber} for biggest average mark.");
 
             foreach (Student student in groupWithBiggestAverageMark.Students)
@@ -105,7 +105,7 @@ namespace Home_5
             List<Student> listOfStudentsWithBiggestReward = new List<Student>();
             int biggestReward = 0;
 
-            foreach (StudentsGroup studentsGroup in this.SchoolGroups)
+            foreach (StudentsGroup studentsGroup in SchoolGroups)
             {
                 foreach (Student student in studentsGroup.Students)
                 {

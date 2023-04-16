@@ -47,94 +47,67 @@ namespace Home_5
             Students = students;
         }
 
-        public Student BestMathMarkInGroup()
+        public Student BestMarkInGroup(Course course)
         {
-            Student bestMathStudent = this.Students[0];
+            Student bestStudent = Students[0];
 
-            foreach (Student student in this.Students)
+            foreach (Student student in Students)
             {
-                if (student.MathMark > bestMathStudent.MathMark)
+                switch (course)
                 {
-                    bestMathStudent = student;
+                    case Course.Math:
+                        if (student.MathMark > bestStudent.MathMark)
+                        {
+                            bestStudent = student;
+                        }
+                        break;
+                    case Course.PhysicalEducation:
+                        if (student.PhysicalEducationMark > bestStudent.PhysicalEducationMark)
+                        {
+                            bestStudent = student;
+                        }
+                        break;
+                    case Course.Biology:
+                        if (student.BiologyMark > bestStudent.BiologyMark)
+                        {
+                            bestStudent = student;
+                        }
+                        break;
+                }
+            }
+            return bestStudent;
+        }
+        
+        public double AverageMark(Course course)
+        {
+            double sum = 0;
+
+            foreach (Student student in Students)
+            {
+                switch (course)
+                {
+                    case Course.Math:
+                        sum += student.MathMark;
+                        break;
+                    case Course.PhysicalEducation:
+                        sum += student.PhysicalEducationMark;
+                        break;
+                    case Course.Biology:
+                        sum += student.BiologyMark;
+                        break;
                 }
             }
 
-            return bestMathStudent;
+            return sum / Students.Length;
         }
-        
-        public Student BestPhysicalEducationMarkInGroup()
-        {
-            Student bestPhysicalEducationStudent = this.Students[0];
 
-            foreach (Student student in this.Students)
-            {
-                if (student.PhysicalEducationMark > bestPhysicalEducationStudent.PhysicalEducationMark)
-                {
-                    bestPhysicalEducationStudent = student;
-                }
-            }
-
-            return bestPhysicalEducationStudent;
-        }
-        
-        public Student BestBiologyMarkInGroup()
-        {
-            Student bestBiologyStudent = this.Students[0];
-
-            foreach (Student student in this.Students)
-            {
-                if (student.BiologyMark > bestBiologyStudent.BiologyMark)
-                {
-                    bestBiologyStudent = student;
-                }
-            }
-
-            return bestBiologyStudent;
-        }
-        
-        public double AverageMathMark()
+        public double AverageAllDisciplinesMark()
         {
             double sum = 0;
 
-            foreach (Student student in this.Students)
-            {
-                sum += student.MathMark;
-            }    
-
-            return sum / this.Students.Length;
-        }
-        
-        public double AveragePhysicalEducationMark()
-        {
-            double sum = 0;
-
-            foreach (Student student in this.Students)
-            {
-                sum += student.PhysicalEducationMark;
-            }    
-
-            return sum / this.Students.Length;
-        }
-        
-        public double AverageBiologyMark()
-        {
-            double sum = 0;
-
-            foreach (Student student in this.Students)
-            {
-                sum += student.BiologyMark;
-            }    
-
-            return sum / this.Students.Length;
-        }
-
-        public double averageAllDisciplinesMark()
-        {
-            double sum = 0;
-
-            sum += this.AverageMathMark();
-            sum += this.AveragePhysicalEducationMark();
-            sum += this.AverageBiologyMark();
+            sum += this.AverageMark(Course.Math);
+            sum += this.AverageMark(Course.PhysicalEducation);
+            sum += this.AverageMark(Course.Biology);
 
             return sum / amountOfDisciplines;
         }

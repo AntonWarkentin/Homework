@@ -10,11 +10,6 @@ namespace Home_7
     {
         public Employee[] allEmployees;
 
-        public List<ICookable> ableToCook;
-        public List<ICleanable> ableToClean;
-        public List<IManageable> ableToManage;
-        public List<IConflictSolveable> ableToSolveConflict;
-
         public List<Happening> RestaurantsHappenings { get; }
 
         public Restaurant()
@@ -23,78 +18,7 @@ namespace Home_7
             Cleaner RestaurantsCleaner = new Cleaner(Home_3.Program.GenerateName(4));
             Manager RestaurantsManager = new Manager(Home_3.Program.GenerateName(4));
             allEmployees = new Employee[3] { RestaurantsCook, RestaurantsCleaner, RestaurantsManager };
-
-            ableToCook = CheckWhosAbleToCook(allEmployees);
-            ableToClean = CheckWhosAbleToClean(allEmployees);
-            ableToManage = CheckWhosAbleToManage(allEmployees);
-            ableToSolveConflict = CheckWhosAbleToSolveConflicts(allEmployees);
-
             RestaurantsHappenings = GenerateRandomHappenings();
-        }
-
-        private List<ICookable> CheckWhosAbleToCook(Employee[] employees)
-        {
-            List<ICookable> isCookable = new List<ICookable>();
-            foreach (Employee employee in employees)
-            {
-                if (employee is ICookable)
-                {
-                    isCookable.Add((ICookable)employee);
-                }
-            }
-            return isCookable;
-        }
-
-        private List<ICleanable> CheckWhosAbleToClean(Employee[] employees)
-        {
-            List<ICleanable> isCleanable = new List<ICleanable>();
-            foreach (Employee employee in employees)
-            {
-                if (employee is ICleanable)
-                {
-                    isCleanable.Add((ICleanable)employee);
-                }
-            }
-            return isCleanable;
-        }
-
-        private List<IManageable> CheckWhosAbleToManage(Employee[] employees)
-        {
-            List<IManageable> isManageable = new List<IManageable>();
-            foreach (Employee employee in employees)
-            {
-                if (employee is IManageable)
-                {
-                    isManageable.Add((IManageable)employee);
-                }
-            }
-            return isManageable;
-        }
-
-        private List<IConflictSolveable> CheckWhosAbleToSolveConflicts(Employee[] employees)
-        {
-            List<IConflictSolveable> isConflictSolveable = new List<IConflictSolveable>();
-            foreach (Employee employee in employees)
-            {
-                if (employee is IConflictSolveable)
-                {
-                    isConflictSolveable.Add((IConflictSolveable)employee);
-                }
-            }
-            return isConflictSolveable;
-        }
-
-        public List<Happening> GenerateRandomHappenings()
-        {
-            Random rand = new Random();
-            List<Happening> randomHappenings = new List<Happening>(rand.Next(1,10));
-
-            for (int i = 0; i < randomHappenings.Capacity; i++)
-            {
-                randomHappenings.Add((Happening)rand.Next(0,3));
-            }
-
-            return randomHappenings;
         }
 
         public void RestaurantsWork()
@@ -115,28 +39,68 @@ namespace Home_7
 
         void WorkOutHappening(Happening happening)
         {
-            Random rand = new Random();
-            int anyAbleEmployeeIndex;
-
             switch (happening)
             {
                 case Happening.CustomersOrder:
-                    anyAbleEmployeeIndex = rand.Next(0, ableToCook.Count);
-                    ableToCook[anyAbleEmployeeIndex].CookFood();
+                    ICookable employeeAbleToCook = (ICookable)SelectEmployeeAbleForWork(happening);
+                    employeeAbleToCook.CookFood();
                     break;
                 case Happening.RestaurantIsDirty:
-                    anyAbleEmployeeIndex = rand.Next(0, ableToClean.Count);
-                    ableToClean[anyAbleEmployeeIndex].Clean();
+                    ICleanable employeeAbleToClean = (ICleanable)SelectEmployeeAbleForWork(happening);
+                    employeeAbleToClean.Clean();
                     break;
                 case Happening.Conflict:
-                    anyAbleEmployeeIndex = rand.Next(0, ableToSolveConflict.Count);
-                    ableToSolveConflict[anyAbleEmployeeIndex].SolveConflict();
+                    IConflictSolveable employeeAbleToSolveConflict = (IConflictSolveable)SelectEmployeeAbleForWork(happening);
+                    employeeAbleToSolveConflict.SolveConflict();
                     break;
                 case Happening.ManagementIsNeeded:
-                    anyAbleEmployeeIndex = rand.Next(0, ableToManage.Count);
-                    ableToManage[anyAbleEmployeeIndex].Manage();
+                    IManageable employeeAbleToManage = (IManageable)SelectEmployeeAbleForWork(happening);
+                    employeeAbleToManage.Manage();
                     break;
             }
         }
+
+        public Employee SelectEmployeeAbleForWork(Happening happening)
+        {
+            Random rand = new Random();
+            int anyAbleEmployeeIndex = rand.Next(0, allEmployees.Length);
+
+            while (!CheckIfAble(allEmployees[anyAbleEmployeeIndex], happening))
+            {
+                anyAbleEmployeeIndex = rand.Next(0, allEmployees.Length);
+            }
+
+            return allEmployees[anyAbleEmployeeIndex];
+        }
+
+        public static bool CheckIfAble(Employee employee, Happening happening)
+        {
+            switch (happening)
+            {
+                case Happening.CustomersOrder:
+                    return (employee is ICookable);
+                case Happening.RestaurantIsDirty:
+                    return (employee is ICleanable);
+                case Happening.Conflict:
+                    return (employee is IConflictSolveable);
+                case Happening.ManagementIsNeeded:
+                    return (employee is IManageable);
+            }
+            return false;
+        }
+
+        public List<Happening> GenerateRandomHappenings()
+        {
+            Random rand = new Random();
+            List<Happening> randomHappenings = new List<Happening>(rand.Next(1,10));
+
+            for (int i = 0; i < randomHappenings.Capacity; i++)
+            {
+                randomHappenings.Add((Happening)rand.Next(0,3));
+            }
+
+            return randomHappenings;
+        }
+
     }
 }

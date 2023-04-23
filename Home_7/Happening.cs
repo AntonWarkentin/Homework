@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Home_7
 {
-    enum Happening
+    public enum Happening
     {
         CustomersOrder,
         RestaurantIsDirty,

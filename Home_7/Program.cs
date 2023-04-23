@@ -36,7 +36,7 @@ namespace Home_7
             mcD.RestaurantsWork();
 
             Console.WriteLine();
-            mcD.RestaurantsHappenings.Add(Happening.CustomersOrder);
+            mcD.RestaurantsHappenings.Add(Happening.ManagementIsNeeded);
             mcD.RestaurantsWork();
 
             Console.WriteLine();

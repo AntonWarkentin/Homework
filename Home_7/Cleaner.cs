@@ -8,8 +8,11 @@ namespace Home_7
 {
     internal class Cleaner : Employee, ICleanable
     {
-        public Cleaner(string name) : base(name)
+        public override string Name { get; set; }
+
+        public Cleaner(string name)
         {
+            Name = name;
         }
 
         public void Clean()

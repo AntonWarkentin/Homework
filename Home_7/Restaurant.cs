@@ -65,28 +65,12 @@ namespace Home_7
             Random rand = new Random();
             int anyAbleEmployeeIndex = rand.Next(0, allEmployees.Length);
 
-            while (!CheckIfAble(allEmployees[anyAbleEmployeeIndex], happening))
+            while (!allEmployees[anyAbleEmployeeIndex].CheckIfAble(happening))
             {
                 anyAbleEmployeeIndex = rand.Next(0, allEmployees.Length);
             }
 
             return allEmployees[anyAbleEmployeeIndex];
-        }
-
-        public static bool CheckIfAble(Employee employee, Happening happening)
-        {
-            switch (happening)
-            {
-                case Happening.CustomersOrder:
-                    return (employee is ICookable);
-                case Happening.RestaurantIsDirty:
-                    return (employee is ICleanable);
-                case Happening.Conflict:
-                    return (employee is IConflictSolveable);
-                case Happening.ManagementIsNeeded:
-                    return (employee is IManageable);
-            }
-            return false;
         }
 
         public List<Happening> GenerateRandomHappenings()

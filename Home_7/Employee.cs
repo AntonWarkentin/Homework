@@ -8,13 +8,22 @@ namespace Home_7
 {
     public abstract class Employee
     {
-        public string Name { get; set; }
+        public abstract string Name { get; set; }
 
-        public abstract override string ToString();
-
-        public Employee(string name)
+        public bool CheckIfAble(Happening happening)
         {
-            Name = name;
+            switch (happening)
+            {
+                case Happening.CustomersOrder:
+                    return (this is ICookable);
+                case Happening.RestaurantIsDirty:
+                    return (this is ICleanable);
+                case Happening.Conflict:
+                    return (this is IConflictSolveable);
+                case Happening.ManagementIsNeeded:
+                    return (this is IManageable);
+            }
+            return false;
         }
     }
 }

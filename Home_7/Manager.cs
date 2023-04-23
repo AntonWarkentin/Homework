@@ -8,8 +8,11 @@ namespace Home_7
 {
     internal class Manager : Employee, ICookable, IConflictSolveable, IManageable
     {
-        public Manager(string name) : base(name)
+        public override string Name { get; set; }
+
+        public Manager(string name)
         {
+            Name = name;
         }
 
         public void CookFood()

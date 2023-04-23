@@ -8,8 +8,11 @@ namespace Home_7
 {
     internal class Cook : Employee, ICookable, ICleanable
     {
-        public Cook(string name) : base(name)
+        public override string Name { get; set; }
+
+        public Cook(string name)
         {
+            Name = name;
         }
 
         public void Clean()

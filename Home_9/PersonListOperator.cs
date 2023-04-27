@@ -46,7 +46,7 @@ namespace Home_9
 
         public IEnumerable<Person> Where(Predicate<Person> predicate)
         {
-            foreach (Person person in Persons)
+            foreach (Person person in this)
             {
                 if (predicate(person))
                 {

@@ -21,7 +21,7 @@ namespace Home_11.UnitTest
         public double PositiveTests(double operand1, double operand2)
         {
             double result = Calculator.Sum(operand1, operand2);
-            TestNotification.NotifyPositive(operand1, operand2, result, Operation.Sum);
+            TestMessage.CalculatorPositiveCase(operand1, operand2, result, Operation.Sum);
             return result;
         }
 
@@ -33,7 +33,7 @@ namespace Home_11.UnitTest
         [TestCase(1, -1, 0, Ignore = "Ignore this")]
         public void NegativeTests(double operand1, double operand2, double notExpected)
         {
-            TestNotification.NotifyNegative(operand1, operand2, notExpected, Operation.Sum);
+            TestMessage.CalculatorNegativeCase(operand1, operand2, notExpected, Operation.Sum);
 
             Assert.That(
                 Calculator.Sum(operand1, operand2),

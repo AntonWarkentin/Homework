@@ -19,7 +19,7 @@ namespace Home_11.UnitTest
         [Test, Pairwise, Category("Positive Test")]
         public void PositiveTests([Random(-0.9, 0.9, 4)] double operand1, [Random(-1, 1, 5)] double operand2)
         {
-            TestNotification.NotifyPositive(operand1, operand2, operand1 - operand2, Operation.Subtraction);
+            TestMessage.CalculatorPositiveCase(operand1, operand2, operand1 - operand2, Operation.Subtraction);
 
             Assert.AreEqual(
                 Calculator.Subtraction(operand1, operand2), 
@@ -37,7 +37,7 @@ namespace Home_11.UnitTest
             var notExpected = random.NextDouble() * random.Next(-100, 100);
             var expected = Calculator.Subtraction(operand1, operand2);
 
-            TestNotification.NotifyNegative(operand1, operand2, notExpected, Operation.Subtraction);
+            TestMessage.CalculatorNegativeCase(operand1, operand2, notExpected, Operation.Subtraction);
             Assert.That(notExpected, Is.Not.EqualTo(expected));
         }
 

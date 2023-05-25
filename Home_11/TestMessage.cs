@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Home_11
 {
-    public static class TestNotification
+    public static class TestMessage
     {
-        public static void NotifyPositive(double operand1, double operand2, double expected, Operation operation)
+        public static void CalculatorPositiveCase(double operand1, double operand2, double expected, Operation operation)
         {
             if (operand2 < 0)
             {
@@ -17,7 +17,7 @@ namespace Home_11
             else Console.WriteLine($"{operand1:f2} {(char)operation} {operand2:f2} = {expected:f2}");
         }
 
-        public static void NotifyNegative(double operand1, double operand2, double notExpected, Operation operation)
+        public static void CalculatorNegativeCase(double operand1, double operand2, double notExpected, Operation operation)
         {
             if (operand2 < 0)
             {

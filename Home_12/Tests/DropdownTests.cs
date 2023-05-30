@@ -15,7 +15,7 @@ namespace Home_12.Tests
 
             foreach (var element in selectDropdown.Options)
             {
-                if (element.Enabled == true)
+                if (element.Enabled)
                 {
                     selectDropdown.SelectByText(element.Text);
                     Assert.That(selectDropdown.SelectedOption.Text, Is.EqualTo(element.Text));

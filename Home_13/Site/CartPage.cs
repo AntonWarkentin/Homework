@@ -17,11 +17,6 @@ namespace Home_13
         private By CartItems = By.ClassName("cart_item");
         private By InventoryItemPrice = By.ClassName("inventory_item_price");
 
-
-        public CartPage()
-        {
-        }
-
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(url);

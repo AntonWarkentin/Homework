@@ -26,28 +26,16 @@ namespace Home_13
             return this;
         }
 
-        public double AddToCartAndGetPrice(int itemNum)
+        public double OperationWithCart(int itemNum, string operation)
         {
-            var itemToAdd = driver.FindElements(Items)[itemNum];
+            var itemToOperate = driver.FindElements(Items)[itemNum];
 
-            if (itemToAdd.FindElement(AddRemoveItemButton).Text == "Add to cart")
+            if (itemToOperate.FindElement(AddRemoveItemButton).Text == operation)
             {
-                itemToAdd.FindElement(AddRemoveItemButton).Click();
+                itemToOperate.FindElement(AddRemoveItemButton).Click();
             }
 
-            return double.Parse(itemToAdd.FindElement(PriceOfItem).Text.Trim('$'), CultureInfo.InvariantCulture);
-        }
-        
-        public double DeleteFromCart(int itemNum)
-        {
-            var itemToDelete = driver.FindElements(Items)[itemNum];
-
-            if (itemToDelete.FindElement(AddRemoveItemButton).Text == "Remove")
-            {
-                itemToDelete.FindElement(AddRemoveItemButton).Click();
-            }
-
-            return 0;
+            return double.Parse(itemToOperate.FindElement(PriceOfItem).Text.Trim('$'), CultureInfo.InvariantCulture);
         }
 
         public IWebElement GetShoppingCartLink()

@@ -11,25 +11,28 @@ namespace Home_13
             var loginPage = (LoginPage)Browser.Instance.NavigateToUrl("https://www.saucedemo.com/");
 
             var inventoryPage = (InventoryPage)loginPage.LoginAsStandartUser();
-            var item1Cost = inventoryPage.AddToCartAndGetPrice(0);
-            var item2Cost = inventoryPage.AddToCartAndGetPrice(1);
-            var item3Cost = inventoryPage.AddToCartAndGetPrice(5);
+            List<double> itemPrices = new List<double>();
+            itemPrices.Add(inventoryPage.OperationWithCart(0, "Add to cart"));
+            itemPrices.Add(inventoryPage.OperationWithCart(1, "Add to cart"));
+            itemPrices.Add(inventoryPage.OperationWithCart(5, "Add to cart"));
 
             var cartPage = (CartPage)inventoryPage.GoToCart();
-            cartPage.AssertCartCostIsEqualToSelectedItems(item1Cost + item2Cost + item3Cost);
+            var pricesSum = itemPrices.Sum();
+            cartPage.AssertCartCostIsEqualToSelectedItems(pricesSum);
 
             inventoryPage = (InventoryPage)cartPage.ContinueShopping();
-            item3Cost = inventoryPage.DeleteFromCart(5);
-            item2Cost = inventoryPage.DeleteFromCart(1);
-            item2Cost = inventoryPage.AddToCartAndGetPrice(2);
+            itemPrices.Remove(inventoryPage.OperationWithCart(5, "Remove"));
+            itemPrices.Remove(inventoryPage.OperationWithCart(1, "Remove"));
+            itemPrices.Add(inventoryPage.OperationWithCart(2, "Add to cart"));
 
             cartPage = (CartPage)inventoryPage.GoToCart();
-            cartPage.AssertCartCostIsEqualToSelectedItems(item1Cost + item2Cost + item3Cost);
+            pricesSum = itemPrices.Sum();
+            cartPage.AssertCartCostIsEqualToSelectedItems(pricesSum);
 
             var checkOutPage1 = (CheckoutStep1Page)cartPage.GoToCheckout();
 
             var checkOutPage2 = (CheckoutStep2Page)checkOutPage1.FillInputAndSubmit();
-            checkOutPage2.ComparePrice(item1Cost + item2Cost + item3Cost);
+            checkOutPage2.ComparePrice(pricesSum);
 
             var checkoutComplete = (CheckoutCompletePage)checkOutPage2.FinishPurchase();
             checkoutComplete.AssertFinishMessage();

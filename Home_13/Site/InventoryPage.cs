@@ -13,8 +13,8 @@ namespace Home_13
     {
         private string url = "https://www.saucedemo.com/inventory.html";
 
-        private By Items = By.XPath("//*[@class='inventory_item']");
-        private By ShoppingCartLink = By.XPath("//*[@class='shopping_cart_link']");
+        private By Items = By.ClassName("inventory_item");
+        private By ShoppingCartLink = By.ClassName("shopping_cart_link");
         private By PriceOfItem = By.ClassName("inventory_item_price");
         private By SideBarMenuButton = By.Id("react-burger-menu-btn");
         private By LogOutButton = By.Id("logout_sidebar_link");

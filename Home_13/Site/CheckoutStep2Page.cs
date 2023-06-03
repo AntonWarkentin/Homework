@@ -13,8 +13,8 @@ namespace Home_13
     {
         private const string url = "https://www.saucedemo.com/checkout-step-two.html";
 
-        private By ItemTotalPrice = By.XPath("//div[@class='summary_subtotal_label']");
-        private By FinishButton = By.XPath("//button[@id='finish']");
+        private By ItemTotalPrice = By.ClassName("summary_subtotal_label");
+        private By FinishButton = By.Id("finish");
 
         public override BasePage OpenPage()
         {

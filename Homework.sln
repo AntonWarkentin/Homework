@@ -31,12 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Home_13", "Home_13\Home_13.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{26B4B29A-6D7E-4951-A05F-B388FD05C7DE}"
 	ProjectSection(SolutionItems) = preProject
-		Home_13\Core\Browser.cs = Home_13\Core\Browser.cs
-		Home_13\Core\TestingHelper.cs = Home_13\Core\TestingHelper.cs
-		Home_13\Core\UserModel.cs = Home_13\Core\UserModel.cs
+		Core\Browser.cs = Core\Browser.cs
+		Core\TestingHelper.cs = Core\TestingHelper.cs
+		Core\UserModel.cs = Core\UserModel.cs
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Home_14", "Home_14\Home_14.csproj", "{8EF69707-1B78-4F6F-A7F8-DE7466664038}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,10 +94,6 @@ Global
 		{322C9C67-23ED-4966-814E-69CAC60752F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{322C9C67-23ED-4966-814E-69CAC60752F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{322C9C67-23ED-4966-814E-69CAC60752F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EF69707-1B78-4F6F-A7F8-DE7466664038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EF69707-1B78-4F6F-A7F8-DE7466664038}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EF69707-1B78-4F6F-A7F8-DE7466664038}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EF69707-1B78-4F6F-A7F8-DE7466664038}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,6 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="..\Core\Browser.cs" Link="Browser.cs" />
+    <Compile Include="..\Core\TestingHelper.cs" Link="TestingHelper.cs" />
+    <Compile Include="..\Core\UserModel.cs" Link="UserModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.3.0" />

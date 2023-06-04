@@ -27,7 +27,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Home_11", "Home_11\Home_11.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Home_12", "Home_12\Home_12.csproj", "{B90B07E0-DE28-4979-B3D9-8DDFD70357C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Home_13", "Home_13\Home_13.csproj", "{322C9C67-23ED-4966-814E-69CAC60752F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Home_13", "Home_13\Home_13.csproj", "{322C9C67-23ED-4966-814E-69CAC60752F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{26B4B29A-6D7E-4951-A05F-B388FD05C7DE}"
+	ProjectSection(SolutionItems) = preProject
+		Home_13\Core\Browser.cs = Home_13\Core\Browser.cs
+		Home_13\Core\TestingHelper.cs = Home_13\Core\TestingHelper.cs
+		Home_13\Core\UserModel.cs = Home_13\Core\UserModel.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

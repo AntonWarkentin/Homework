@@ -1,11 +1,6 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
+﻿using OpenQA.Selenium;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Core;
 
 namespace Home_13
 {

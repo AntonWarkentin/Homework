@@ -1,6 +1,6 @@
 ﻿using Core;
 
-namespace Home_13
+namespace Home_13.Tests
 {
     public class BaseTest
     {

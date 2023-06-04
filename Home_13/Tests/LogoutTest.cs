@@ -1,6 +1,7 @@
 using Core;
+using Home_13.Site;
 
-namespace Home_13
+namespace Home_13.Tests
 {
     public class LogoutTest : BaseTest
     {

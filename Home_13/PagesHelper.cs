@@ -1,15 +1,10 @@
-﻿using Microsoft.VisualStudio.TestPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core;
 
 namespace Home_13
 {
-    internal static class NavigationHelper
+    internal static class PagesHelper
     {
-        private static Dictionary<string, Func<BasePage>> pages1 = new Dictionary<string, Func<BasePage>>()
+        private static Dictionary<string, Func<BasePage>> pages = new Dictionary<string, Func<BasePage>>()
         {
             { "https://www.saucedemo.com/", () => new LoginPage() },
             { "https://www.saucedemo.com/inventory.html", () => new InventoryPage() },
@@ -21,7 +16,7 @@ namespace Home_13
 
         public static BasePage CreatePageObject(string url)
         {
-            return pages1[url]();
+            return pages[url]();
         }
     }
 }

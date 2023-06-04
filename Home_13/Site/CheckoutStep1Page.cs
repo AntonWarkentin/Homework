@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using Core;
 
-namespace Home_13
+namespace Home_13.Site
 {
     internal class CheckoutStep1Page : BasePage
     {

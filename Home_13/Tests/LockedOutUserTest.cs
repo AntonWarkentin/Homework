@@ -1,6 +1,7 @@
 using Core;
+using Home_13.Site;
 
-namespace Home_13
+namespace Home_13.Tests
 {
     public class LockedOutUserTest : BaseTest
     {
@@ -11,7 +12,7 @@ namespace Home_13
             loginPage = (LoginPage)loginPage.LoginAsLockedOuttUser();
             loginPage.CheckLockedOutErrorMessage();
             loginPage.CloseErrorMessage();
-            loginPage = (LoginPage)NavigationHelper.CreatePageObject(Browser.Instance.Driver.Url);
+            loginPage = (LoginPage)PagesHelper.CreatePageObject(Browser.Instance.Driver.Url);
             loginPage.CheckErrorMessageIsClear();
         }
     }

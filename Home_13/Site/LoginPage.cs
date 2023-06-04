@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using Core;
 
-namespace Home_13
+namespace Home_13.Site
 {
     internal class LoginPage : BasePage
     {
@@ -43,7 +43,7 @@ namespace Home_13
         {
             Assert.That(driver.FindElement(ErrorMessage).Text, Is.EqualTo(LOCKED_OUT_USER_MESSAGE));
         }
-        
+
         public void CheckNotMatchingErrorMessage()
         {
             Assert.That(driver.FindElement(ErrorMessage).Text, Is.EqualTo(NOT_MATCHING_USER_MESSAGE));

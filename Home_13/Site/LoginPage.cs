@@ -21,12 +21,6 @@ namespace Home_13.Site
         private By LoginButton = By.CssSelector(".submit-button");
         private By CloseErrorMessageButton = By.ClassName("error-button");
 
-        public override BasePage OpenPage()
-        {
-            driver.Navigate().GoToUrl(url);
-            return this;
-        }
-
         public BasePage LoginAsStandartUser()
         {
             var standartUser = new UserModel(STANDART_USER_NAME, USER_PASSWORD);

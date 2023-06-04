@@ -12,12 +12,6 @@ namespace Home_13.Site
         private By PostalCodeInput = By.Name("postalCode");
         private By ContinueButton = By.XPath("//input[@type='submit']");
 
-        public override BasePage OpenPage()
-        {
-            driver.Navigate().GoToUrl(url);
-            return this;
-        }
-
         public BasePage FillInputAndSubmit()
         {
             driver.FindElement(FirstNameInput).SendKeys("TestFirstNameInput");

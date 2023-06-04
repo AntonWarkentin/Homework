@@ -11,12 +11,6 @@ namespace Home_13.Site
         private By BackToProductsButton = By.XPath("//button[@id='back-to-products']");
         private string expectedMessage = "Your order has been dispatched, and will arrive just as fast as the pony can get there!";
 
-        public override BasePage OpenPage()
-        {
-            driver.Navigate().GoToUrl(url);
-            return this;
-        }
-
         public void AssertFinishMessage()
         {
             Assert.That(driver.FindElement(CompleteText).Text, Is.EqualTo(expectedMessage));

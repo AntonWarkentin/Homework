@@ -11,12 +11,6 @@ namespace Home_13.Site
         private By ItemTotalPrice = By.ClassName("summary_subtotal_label");
         private By FinishButton = By.Id("finish");
 
-        public override BasePage OpenPage()
-        {
-            driver.Navigate().GoToUrl(url);
-            return this;
-        }
-
         public void ComparePrice(double expectedPrice)
         {
             var priceText = driver.FindElement(ItemTotalPrice).Text;

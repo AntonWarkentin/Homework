@@ -12,11 +12,11 @@ namespace Core
         {
             double sum = 0.0;
 
-            foreach(var item in list)
+            foreach (var item in list)
             {
                 sum += item;
             }
-            
+
             return sum;
         }
     }

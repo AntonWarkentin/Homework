@@ -15,12 +15,6 @@ namespace Home_13.Site
         private By LogOutButton = By.Id("logout_sidebar_link");
         private By AddRemoveItemButton = By.TagName("button");
 
-        public override BasePage OpenPage()
-        {
-            driver.Navigate().GoToUrl(url);
-            return this;
-        }
-
         public double OperationWithCart(int itemNum, string operation)
         {
             var itemToOperate = driver.FindElements(Items)[itemNum];

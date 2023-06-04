@@ -11,7 +11,5 @@ namespace Core
         {
             driver = Browser.Instance.Driver;
         }
-
-        public abstract BasePage OpenPage();
     }
 }

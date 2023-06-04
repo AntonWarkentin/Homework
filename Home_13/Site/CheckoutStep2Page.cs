@@ -2,7 +2,7 @@
 using System.Globalization;
 using Core;
 
-namespace Home_13
+namespace Home_13.Site
 {
     internal class CheckoutStep2Page : BasePage
     {

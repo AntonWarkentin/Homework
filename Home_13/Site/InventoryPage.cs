@@ -2,7 +2,7 @@
 using System.Globalization;
 using Core;
 
-namespace Home_13
+namespace Home_13.Site
 {
     internal class InventoryPage : BasePage
     {
@@ -40,7 +40,7 @@ namespace Home_13
 
         public int AmountOfItemsInCart()
         {
-            return (GetShoppingCartLink().Text == "")? 0: int.Parse(GetShoppingCartLink().Text);
+            return GetShoppingCartLink().Text == "" ? 0 : int.Parse(GetShoppingCartLink().Text);
         }
 
         public BasePage GoToCart()

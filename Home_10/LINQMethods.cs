@@ -1,15 +1,14 @@
-﻿using Home_10;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Home_9
+namespace Home_10
 {
     public static class LINQMethods
     {
-        
+
         /// <summary>
         /// - Метод возвращает первое слово из последовательности слов, содержащее только одну букву.
         /// </summary>
@@ -51,7 +50,7 @@ namespace Home_9
         /// - Напишите метод, который принимает список и извлекает значения с 5  элемента (включительно) те значение которые содержат 3
         /// </summary>
 
-        public static List<int> ElementsWith3 (List<int> list)
+        public static List<int> ElementsWith3(List<int> list)
         {
             return list.Skip(4).Where(x => x.ToString().Contains("3")).ToList();
         }

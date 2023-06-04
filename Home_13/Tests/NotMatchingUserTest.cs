@@ -1,6 +1,7 @@
 using Core;
+using Home_13.Site;
 
-namespace Home_13
+namespace Home_13.Tests
 {
     public class NotMatchingUserTest : BaseTest
     {
@@ -12,7 +13,7 @@ namespace Home_13
             loginPage.TryToLogin(notMatchingUser);
             loginPage.CheckNotMatchingErrorMessage();
             loginPage.CloseErrorMessage();
-            loginPage = (LoginPage)NavigationHelper.CreatePageObject(Core.Browser.Instance.Driver.Url);
+            loginPage = (LoginPage)NavigationHelper.CreatePageObject(Browser.Instance.Driver.Url);
             loginPage.CheckErrorMessageIsClear();
         }
     }

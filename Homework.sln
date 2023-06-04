@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Home_13", "Home_13\Home_13.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{26B4B29A-6D7E-4951-A05F-B388FD05C7DE}"
 	ProjectSection(SolutionItems) = preProject
+		Core\BasePage.cs = Core\BasePage.cs
 		Core\Browser.cs = Core\Browser.cs
+		Core\NavigationHelper.cs = Core\NavigationHelper.cs
 		Core\TestingHelper.cs = Core\TestingHelper.cs
 		Core\UserModel.cs = Core\UserModel.cs
 	EndProjectSection

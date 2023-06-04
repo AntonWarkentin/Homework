@@ -5,7 +5,7 @@ namespace Core
 {
     public class NavigationHelper
     {
-        private static Dictionary<string, Func<BasePage>> pages;
+        public static Dictionary<string, Func<BasePage>> pages;
 
         public static BasePage CreatePageObject(string url)
         {

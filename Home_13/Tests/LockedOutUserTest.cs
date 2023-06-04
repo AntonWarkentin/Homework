@@ -12,7 +12,7 @@ namespace Home_13.Tests
             loginPage = (LoginPage)loginPage.LoginAsLockedOuttUser();
             loginPage.CheckLockedOutErrorMessage();
             loginPage.CloseErrorMessage();
-            loginPage = (LoginPage)PagesHelper.CreatePageObject(Browser.Instance.Driver.Url);
+            loginPage = (LoginPage)NavigationHelper.CreatePageObject(Browser.Instance.Driver.Url);
             loginPage.CheckErrorMessageIsClear();
         }
     }

@@ -13,7 +13,7 @@ namespace Home_13.Tests
             loginPage.TryToLogin(notMatchingUser);
             loginPage.CheckNotMatchingErrorMessage();
             loginPage.CloseErrorMessage();
-            loginPage = (LoginPage)PagesHelper.CreatePageObject(Browser.Instance.Driver.Url);
+            loginPage = (LoginPage)NavigationHelper.CreatePageObject(Browser.Instance.Driver.Url);
             loginPage.CheckErrorMessageIsClear();
         }
     }

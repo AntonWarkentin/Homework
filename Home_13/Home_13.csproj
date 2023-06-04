@@ -18,6 +18,7 @@
   <ItemGroup>
     <Compile Include="..\Core\BasePage.cs" Link="BasePage.cs" />
     <Compile Include="..\Core\Browser.cs" Link="Browser.cs" />
+    <Compile Include="..\Core\NavigationHelper.cs" Link="NavigationHelper.cs" />
     <Compile Include="..\Core\TestingHelper.cs" Link="TestingHelper.cs" />
     <Compile Include="..\Core\UserModel.cs" Link="UserModel.cs" />
   </ItemGroup>

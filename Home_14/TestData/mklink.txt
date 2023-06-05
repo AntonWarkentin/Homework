@@ -1,0 +1,1 @@
+mklink /J "C:\ProgramData\Activision\Call Of Duty Black Ops Cold War\shadercache" "D:\temp\Call of Duty Black Ops Cold War\shadercache"

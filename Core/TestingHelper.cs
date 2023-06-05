@@ -19,5 +19,10 @@ namespace Core
 
             return sum;
         }
+
+        public static string GetFileNameFromFullPath(this string fullPath)
+        {
+            return fullPath.Split('/').Last();
+        }
     }
 }

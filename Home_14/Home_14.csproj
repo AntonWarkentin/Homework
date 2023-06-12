@@ -10,14 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\Core\BasePage.cs" Link="Core\BasePage.cs" />
-    <Compile Include="..\Core\Browser.cs" Link="Core\Browser.cs" />
-    <Compile Include="..\Core\NavigationHelper.cs" Link="Core\NavigationHelper.cs" />
-    <Compile Include="..\Core\TestingHelper.cs" Link="Core\TestingHelper.cs" />
-    <Compile Include="..\Core\UserModel.cs" Link="Core\UserModel.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.3.0" />
@@ -29,8 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\" />
     <Folder Include="TestData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
 </Project>

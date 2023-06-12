@@ -1,5 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using System;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace Core
 {
@@ -50,12 +55,21 @@ namespace Core
             instance = null;
         }
 
-        public BasePage OpenNewPageByClick(IWebElement element)
+        public BasePage OpenNewPageByClick(IWebElement element, int secondsToWait = 0, string partToDeleteStartsWith = "")
         {
             element.Click();
-            return NavigationHelper.CreatePageObject(driver.Url);
-        }
+            Thread.Sleep(secondsToWait * 1000);
 
+            var finalPath = driver.Url;
+
+            if (partToDeleteStartsWith != string.Empty)
+            {
+                finalPath = finalPath.Substring(0, finalPath.IndexOf(partToDeleteStartsWith));
+            }
+
+            return NavigationHelper.CreatePageObject(finalPath);
+        }
+        
         public BasePage NavigateToUrl(string url)
         {
             driver.Navigate().GoToUrl(url);

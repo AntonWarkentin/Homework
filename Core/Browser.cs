@@ -6,6 +6,7 @@ namespace Core
     public class Browser
     {
         private static Browser instance = null;
+
         public static Browser Instance
         {
             get
@@ -24,8 +25,22 @@ namespace Core
 
         private Browser()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+            var implicitWait = Double.Parse(TestContext.Parameters["ImplicitWait"]);
+            var downloadPath = TestContext.Parameters["DownloadPath"];
+
+            if (downloadPath != null)
+            {
+                var chromeOptions = new ChromeOptions();
+                chromeOptions.AddUserProfilePreference("download.default_directory", downloadPath);
+
+                driver = new ChromeDriver(chromeOptions);
+            }
+            else
+            {
+                driver = new ChromeDriver();
+            }
+            
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(implicitWait);
             driver.Manage().Window.Maximize();
         }
 

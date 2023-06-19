@@ -1,9 +1,18 @@
+using Allure.Net.Commons;
 using Home_15.Pages;
 
 namespace Home_15.Tests
 {
     public class BaseTest
     {
+        private AllureLifecycle allure;
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            allure = AllureLifecycle.Instance;
+        }
+
         [SetUp]
         public void SetUp()
         {

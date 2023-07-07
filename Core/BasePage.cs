@@ -6,6 +6,7 @@ namespace Core
     public abstract class BasePage
     {
         protected IWebDriver driver;
+        protected string url;
 
         public BasePage()
         {

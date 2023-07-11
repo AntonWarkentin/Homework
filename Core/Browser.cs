@@ -1,9 +1,11 @@
-﻿using NUnit.Framework;
+﻿using Newtonsoft.Json.Linq;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 
 namespace Core
@@ -30,13 +32,13 @@ namespace Core
 
         private Browser()
         {
-            var implicitWait = Double.Parse(TestContext.Parameters["ImplicitWait"]);
-            var downloadPath = TestContext.Parameters["DownloadPath"];
+            var implicitWait = JObject.Parse(File.ReadAllText("appdata.json"))["ImplicitWait"].ToObject<double>();
+            var downloadPath = JObject.Parse(File.ReadAllText("appdata.json"))["DownloadPath"];
 
             if (downloadPath != null)
             {
                 var chromeOptions = new ChromeOptions();
-                chromeOptions.AddUserProfilePreference("download.default_directory", downloadPath);
+                chromeOptions.AddUserProfilePreference("download.default_directory", downloadPath.ToString());
 
                 driver = new ChromeDriver(chromeOptions);
             }
@@ -55,6 +57,11 @@ namespace Core
             instance = null;
         }
 
+        public void NavigateToUrl(string url)
+        {
+            driver.Navigate().GoToUrl(url);
+        }
+
         public BasePage OpenNewPageByClick(IWebElement element, int secondsToWait = 0, string partToDeleteStartsWith = "")
         {
             element.Click();
@@ -68,12 +75,6 @@ namespace Core
             }
 
             return NavigationHelper.CreatePageObject(finalPath);
-        }
-        
-        public BasePage NavigateToUrl(string url)
-        {
-            driver.Navigate().GoToUrl(url);
-            return NavigationHelper.CreatePageObject(driver.Url);
         }
     }
 }
